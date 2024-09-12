@@ -17,7 +17,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -42,7 +41,7 @@ fun HeaderDetails(navController: NavController) {
             .padding(horizontal = 10.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            IconButton(onClick = { navController.navigate(Routes.Home) }) {
+            IconButton(onClick = { navController.navigate(Routes.News) }) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                     contentDescription = null,

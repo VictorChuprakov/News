@@ -6,9 +6,7 @@ data class NewsId(
     val id: Int,
     val image: String,
     val link: String,
-    val newsCategoryList: NewsCategoryList,
-    val newsParserIdentifier: String,
-    val newsSystemIdentifier: String,
-    val status: String,
-    val title: String
+    val title: String,
 )
+
+

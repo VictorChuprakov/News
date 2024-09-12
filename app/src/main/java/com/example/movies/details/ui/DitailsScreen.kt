@@ -13,16 +13,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.movies.details.data.repository.GetNewsRepositoryByIdImpl
+import com.example.movies.shared.data.di.RetrofitProvider
 import com.example.movies.details.ui.components.HeaderDetails
 import com.example.movies.details.ui.components.NewsContent
-import com.example.movies.shared.data.api.RetrofitClient
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun DetailsScreen(navController: NavController, id: Int) {
-    val repository = GetNewsRepositoryByIdImpl(RetrofitClient.apiNews)
-    val detailsViewModel: DetailsViewModel = viewModel(factory = DetailsViewModelFactory(repository))
+    val detailsViewModel: DetailsViewModel = viewModel(factory = DetailsViewModelFactory(RetrofitProvider.newsIdRepository))
 
     LaunchedEffect(id) {
         detailsViewModel.getNewsById(id)
@@ -30,9 +28,9 @@ fun DetailsScreen(navController: NavController, id: Int) {
 
     val news by detailsViewModel.newsById.collectAsState()
     val error by detailsViewModel.error.collectAsState()
-    if(error != ""){
+    if(error != null){
         Toast.makeText(LocalContext.current, error, Toast.LENGTH_SHORT).show()
-        detailsViewModel.cancellationError()
+        detailsViewModel.clearError()
     }
     Column(modifier = Modifier.fillMaxSize()) {
         HeaderDetails(navController = navController)

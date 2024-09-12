@@ -1,4 +1,4 @@
-package com.example.movies.home.data
+package com.example.movies.news.data.model
 
 
 data class CroppedNews(

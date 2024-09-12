@@ -14,14 +14,12 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.navArgument
 import com.example.movies.details.ui.DetailsScreen
 import com.example.movies.favourites.ui.FavouriteScreen
-import com.example.movies.home.ui.HomeScreen
-import com.example.movies.search.ui.SearchScreen
-import com.example.movies.shared.data.dataprefence.DataPreference
+import com.example.movies.news.ui.NewsScreen
 import com.example.movies.shared.until.Routes
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun NavHostContainer(navController: NavHostController, dataPreference: DataPreference) {
+fun NavHostContainer(navController: NavHostController) {
     Scaffold(
         bottomBar = {
             if (navController.currentBackStackEntryAsState().value?.destination?.route != "${Routes.Details}/{id}") {
@@ -31,7 +29,7 @@ fun NavHostContainer(navController: NavHostController, dataPreference: DataPrefe
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = Routes.Home,
+            startDestination = Routes.News,
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(
@@ -41,11 +39,8 @@ fun NavHostContainer(navController: NavHostController, dataPreference: DataPrefe
                 val id = backStackEntry.arguments?.getInt("id")
                 id?.let { DetailsScreen(navController, it) }
             }
-            composable(Routes.Home) {
-                HomeScreen(navController, dataPreference)
-            }
-            composable(Routes.Search) {
-                SearchScreen()
+            composable(Routes.News) {
+                NewsScreen(navController)
             }
             composable(Routes.Favorite) {
                 FavouriteScreen()

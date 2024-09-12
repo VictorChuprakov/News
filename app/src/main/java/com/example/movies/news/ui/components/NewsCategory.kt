@@ -1,10 +1,10 @@
-package com.example.movies.home.ui.components
+package com.example.movies.news.ui.components
 
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import androidx.paging.compose.LazyPagingItems
-import com.example.movies.home.data.News
+import com.example.movies.news.data.model.News
 
 @Composable
 fun NewsCategory(

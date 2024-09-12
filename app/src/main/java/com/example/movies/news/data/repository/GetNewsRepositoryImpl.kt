@@ -1,10 +1,11 @@
-package com.example.movies.home.data.repository
+package com.example.movies.news.data.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.example.movies.home.data.News
-import com.example.movies.home.domain.GetNewsRepository
+import com.example.movies.news.data.NewsDTO
+import com.example.movies.news.data.model.News
+import com.example.movies.news.domain.GetNewsRepository
 import com.example.movies.shared.data.api.ApiService
 import kotlinx.coroutines.flow.Flow
 

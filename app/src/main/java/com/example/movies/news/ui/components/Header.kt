@@ -1,14 +1,9 @@
-package com.example.movies.home.ui.components
+package com.example.movies.news.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,19 +15,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.example.movies.R
-import com.example.movies.shared.until.Routes
 
 
 @Composable
-fun HeaderHome(navController: NavController) {
+fun HeaderHome() {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 10.dp)
+            .padding(horizontal = 20.dp)
     ) {
         Text(
             text = buildAnnotatedString {
@@ -43,13 +36,8 @@ fun HeaderHome(navController: NavController) {
                     append("News")
                 }
             },
-            fontSize = 20.sp,
+            fontSize = 25.sp,
             fontWeight = FontWeight.Bold
         )
-        IconButton(onClick = { navController.navigate(Routes.Search) }) {
-            Icon(imageVector = Icons.Default.Search, contentDescription = "search",
-            tint = MaterialTheme.colorScheme.primary
-            )
-        }
     }
 }

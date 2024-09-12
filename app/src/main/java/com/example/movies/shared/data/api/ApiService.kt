@@ -1,7 +1,7 @@
 package com.example.movies.shared.data.api
 
-import com.example.movies.details.data.model.NewsId
-import com.example.movies.home.data.CroppedNews
+import com.example.movies.details.data.model.NewsIdDTO
+import com.example.movies.news.data.CroppedNewsDTO
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -13,11 +13,11 @@ interface ApiService {
         @Query("page") page: Int,
         @Query("limit") limit: Int,
         @Query("categories[]") category: String
-        ) :CroppedNews
+        ) :Response<CroppedNewsDTO>
 
 
     @GET("news/{id}")
     suspend fun getNewsId(
         @Path("id") id: Int
-    ): Response<NewsId>
+    ): Response<NewsIdDTO>
 }

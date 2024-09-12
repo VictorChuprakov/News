@@ -14,24 +14,25 @@ class DetailsViewModel(private val repository: GetNewsRepositoryById) : ViewMode
     private val _newsById = MutableStateFlow<NewsId?>(null)
     val newsById = _newsById.asStateFlow()
 
-    private val _error = MutableStateFlow("")
+    private val _error = MutableStateFlow<String?>(null)
     val error = _error.asStateFlow()
 
     fun getNewsById(id: Int) {
         viewModelScope.launch {
             try {
-                _newsById.value = repository.getNewsById(id)
-            }
-            catch (e: IOException){
+                val newsIdDTO = repository.getNewsById(id)
+                _newsById.value = newsIdDTO
+            } catch (e: IOException) {
                 _error.value = "Ошибка сети"
-            }
-            catch (e: HttpException){
+            } catch (e: HttpException) {
                 _error.value = "Ошибка запроса"
+            } catch (e: Exception) {
+                _error.value = "Произошла ошибка"
             }
         }
     }
 
-    fun cancellationError(){
-        _error.value = ""
+    fun clearError() {
+        _error.value = null
     }
 }

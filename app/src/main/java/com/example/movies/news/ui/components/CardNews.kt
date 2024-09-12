@@ -1,4 +1,4 @@
-package com.example.movies.home.ui.components
+package com.example.movies.news.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -32,19 +32,17 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.movies.R
-import com.example.movies.home.data.News
+import com.example.movies.news.data.NewsDTO
+import com.example.movies.news.data.model.News
 import com.example.movies.shared.until.Routes
 
 @Composable
 fun CardNews(navController: NavController, news: News) {
-    // Состояние для отслеживания загрузки
     var isLoading by remember { mutableStateOf(true) }
 
-    // Локальная функция для обработки изменений состояния
     fun onLoadingStarted() {
         isLoading = true
     }
-
     fun onLoadingFinished() {
         isLoading = false
     }

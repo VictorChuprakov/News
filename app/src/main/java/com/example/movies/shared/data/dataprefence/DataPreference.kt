@@ -26,7 +26,7 @@ class DataPreference(private val context: Context) {
 
     val categoryState: Flow<String> = context.dataStore.data
         .map { preferences ->
-            preferences[CATEGORY_STATE] ?: "health"
+            preferences[CATEGORY_STATE] ?: "politics"
         }
 }
 
