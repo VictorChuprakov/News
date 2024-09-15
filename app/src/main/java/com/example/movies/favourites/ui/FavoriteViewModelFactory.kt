@@ -1,18 +1,17 @@
-package com.example.movies.details.ui
+package com.example.movies.favourites.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.movies.details.domain.GetNewsRepositoryById
 import com.example.movies.shared.domain.DatabaseRepository
 
-class DetailsViewModelFactory(
-    private val repository: GetNewsRepositoryById,
+class FavoriteViewModelFactory(
     private val databaseRepository: DatabaseRepository
+
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(DetailsViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(FavoriteViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return DetailsViewModel(repository, databaseRepository) as T
+            return FavoriteViewModel(databaseRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

@@ -4,4 +4,5 @@ object Routes {
     const val News = "news"
     const val Favorite = "favorite"
     const val Details = "details"
+    const val DetailsFavorite = "details_favorite"
 }
