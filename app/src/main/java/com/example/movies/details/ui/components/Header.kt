@@ -13,8 +13,8 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
@@ -26,13 +26,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.movies.R
-import com.example.movies.details.data.model.NewsId
-import com.example.movies.details.ui.DetailsViewModel
 import com.example.movies.shared.until.Routes
 
 @Composable
-fun HeaderDetails(navController: NavController, detailsViewModel: DetailsViewModel, news: NewsId?) {
-    val isFavorite by detailsViewModel.isFavorite.collectAsState()
+fun HeaderDetails(navController: NavController) {
+    val activity = remember {
+        mutableStateOf(false)
+    }
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -63,9 +63,10 @@ fun HeaderDetails(navController: NavController, detailsViewModel: DetailsViewMod
             )
         }
 
-        IconButton(onClick = { detailsViewModel.toggleFavorite(news) }) {
+        IconButton(onClick = { activity.value = !activity.value }) {
             Icon(
-                imageVector = if (isFavorite) Icons.Filled.Bookmark else Icons.Outlined.BookmarkBorder,
+                imageVector = if (activity.value) Icons.Filled.Bookmark 
+                else Icons.Outlined.BookmarkBorder,
                 contentDescription = "BookMark",
                 tint = colorResource(id = R.color.FoxBlue)
             )

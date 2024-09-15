@@ -74,11 +74,6 @@ dependencies {
     //dataStore
     implementation ("androidx.datastore:datastore-preferences:1.0.0-alpha01")
     implementation("androidx.datastore:datastore-preferences-core:1.1.1")
-    //room
-    implementation ("androidx.room:room-runtime:2.6.1")
-    kapt ("androidx.room:room-compiler:2.6.1")
-    implementation ("androidx.room:room-ktx:2.6.1")
-
 
 
 
