@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.movies.R
 import com.example.movies.details.data.model.NewsId
+import com.example.movies.details.ui.DetailsViewModel
 
 
 @RequiresApi(Build.VERSION_CODES.O)

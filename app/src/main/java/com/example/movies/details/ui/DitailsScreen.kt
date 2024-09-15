@@ -13,14 +13,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.movies.shared.data.di.RetrofitProvider
 import com.example.movies.details.ui.components.HeaderDetails
 import com.example.movies.details.ui.components.NewsContent
+import com.example.movies.shared.data.di.RetrofitProvider
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun DetailsScreen(navController: NavController, id: Int) {
-    val detailsViewModel: DetailsViewModel = viewModel(factory = DetailsViewModelFactory(RetrofitProvider.newsIdRepository))
+    val context = LocalContext.current
+    val detailsViewModel: DetailsViewModel = viewModel(factory = DetailsViewModelFactory(
+        RetrofitProvider.newsIdRepository,
+        RetrofitProvider.databaseRepository
+    ))
 
     LaunchedEffect(id) {
         detailsViewModel.getNewsById(id)
@@ -28,12 +32,17 @@ fun DetailsScreen(navController: NavController, id: Int) {
 
     val news by detailsViewModel.newsById.collectAsState()
     val error by detailsViewModel.error.collectAsState()
-    if(error != null){
-        Toast.makeText(LocalContext.current, error, Toast.LENGTH_SHORT).show()
+
+    if (error != null) {
+        Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
         detailsViewModel.clearError()
     }
+
     Column(modifier = Modifier.fillMaxSize()) {
-        HeaderDetails(navController = navController)
-        NewsContent(news)
+        // Ensure `news` is not null before accessing it
+        if (news != null) {
+            HeaderDetails(navController, detailsViewModel, news)
+            NewsContent(news)
+        }
     }
 }

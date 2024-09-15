@@ -13,7 +13,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.navArgument
 import com.example.movies.details.ui.DetailsScreen
-import com.example.movies.favourites.ui.FavouriteScreen
+import com.example.movies.favourites.ui.FavoritesDetailsScreen
+import com.example.movies.favourites.ui.FavoritesScreen
 import com.example.movies.news.ui.NewsScreen
 import com.example.movies.shared.until.Routes
 
@@ -43,7 +44,11 @@ fun NavHostContainer(navController: NavHostController) {
                 NewsScreen(navController)
             }
             composable(Routes.Favorite) {
-                FavouriteScreen()
+                FavoritesScreen(navController)
+            }
+            composable("${Routes.DetailsFavorite}/{newsId}") { backStackEntry ->
+                val newsId = backStackEntry.arguments?.getString("newsId")?.toInt() ?: 0
+                FavoritesDetailsScreen(navController, newsId)
             }
         }
     }
