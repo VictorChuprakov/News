@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -21,10 +22,12 @@ import com.example.movies.shared.data.di.RetrofitProvider
 @Composable
 fun DetailsScreen(navController: NavController, id: Int) {
     val context = LocalContext.current
-    val detailsViewModel: DetailsViewModel = viewModel(factory = DetailsViewModelFactory(
-        RetrofitProvider.newsIdRepository,
-        RetrofitProvider.databaseRepository
-    ))
+    val detailsViewModel: DetailsViewModel = viewModel(
+        factory = DetailsViewModelFactory(
+            RetrofitProvider.newsIdRepository,
+            RetrofitProvider.databaseRepository
+        )
+    )
 
     LaunchedEffect(id) {
         detailsViewModel.getNewsById(id)
@@ -39,10 +42,10 @@ fun DetailsScreen(navController: NavController, id: Int) {
     }
 
     Column(modifier = Modifier.fillMaxSize()) {
-        // Ensure `news` is not null before accessing it
-        if (news != null) {
-            HeaderDetails(navController, detailsViewModel, news)
-            NewsContent(news)
+        news?.let {
+            HeaderDetails(navController, detailsViewModel, news!!)
+            NewsContent(news!!)
         }
     }
 }
+

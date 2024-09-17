@@ -2,6 +2,7 @@ package com.example.movies.shared.ui.bottomNavigation
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
@@ -37,7 +38,7 @@ fun BottomNavigationBar(navController: NavHostController) {
                             .size(25.dp)
                     )
                 },
-                label = { Text(text = navItem.label)},
+                label = { Text(text = navItem.label, color = MaterialTheme.colorScheme.onPrimaryContainer)},
                 colors = NavigationBarItemDefaults.colors(
                     indicatorColor = Color.Transparent,
                 ),

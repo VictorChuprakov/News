@@ -1,41 +1,20 @@
 <resources>
     <string name="app_name">FoxNews</string>
-    <string-array name="category_display_names">
-        <item>Politics</item>
-        <item>Economics</item>
-        <item>Business</item>
-        <item>Society</item>
-        <item>Science</item>
-        <item>Technology</item>
-        <item>Culture</item>
-        <item>Sports</item>
-        <item>Entertainment</item>
-        <item>Health</item>
-        <item>Natural Events</item>
-        <item>Nature</item>
-        <item>Incidents</item>
-        <item>Education</item>
-        <item>Crime</item>
-        <item>Religion</item>
-        <item>International Relations</item>
-    </string-array>
-    <string-array name="category_api_names">
-        <item>politics</item>
-        <item>economics</item>
-        <item>business</item>
-        <item>society</item>
-        <item>science</item>
-        <item>technology</item>
-        <item>culture</item>
-        <item>sports</item>
-        <item>entertainment</item>
-        <item>health</item>
-        <item>natural_events</item>
-        <item>nature</item>
-        <item>incidents</item>
-        <item>education</item>
-        <item>crime</item>
-        <item>religion</item>
-        <item>international_relations</item>
-    </string-array>
+    <string name="politics">Politics</string>
+    <string name="economics">Economics</string>
+    <string name="business">Business</string>
+    <string name="society">Society</string>
+    <string name="science">Science</string>
+    <string name="technology">Technology</string>
+    <string name="culture">Culture</string>
+    <string name="sports">Sports</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="health">Health</string>
+    <string name="natural_events">Natural Events</string>
+    <string name="nature">Nature</string>
+    <string name="incidents">Incidents</string>
+    <string name="education">Education</string>
+    <string name="crime">Crime</string>
+    <string name="religion">Religion</string>
+    <string name="international_relations">International Relations</string>
 </resources>

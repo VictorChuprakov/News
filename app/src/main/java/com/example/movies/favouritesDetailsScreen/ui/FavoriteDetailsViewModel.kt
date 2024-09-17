@@ -12,7 +12,6 @@ class FavoriteDetailsViewModel(private val databaseRepository: DatabaseRepositor
      private val _newsDetails = MutableStateFlow<FavoriteNewEntity?>(null)
      val newsDetails: StateFlow<FavoriteNewEntity?> = _newsDetails
 
-     // Получение новости по ID
      fun getNewsDetailsById(id: Int) {
           viewModelScope.launch {
                try {
@@ -24,7 +23,6 @@ class FavoriteDetailsViewModel(private val databaseRepository: DatabaseRepositor
           }
      }
 
-     // Удаление новости по ID
      fun deleteDetails(id: Int) {
           viewModelScope.launch {
                try {

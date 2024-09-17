@@ -53,27 +53,31 @@ android {
 
 dependencies {
     //Material Icon
-    implementation("androidx.compose.material:material-icons-extended:1.7.0")
+    implementation(libs.androidx.material.icons.extended)
     //Navigation
-    implementation("androidx.navigation:navigation-compose:2.8.0")
+    implementation(libs.androidx.navigation.compose)
     //Coil
-    implementation("io.coil-kt:coil-compose:2.7.0")
+    implementation(libs.coil.compose)
     //SplashScreen
-    implementation("androidx.core:core-splashscreen:1.0.1")
+    implementation(libs.androidx.core.splashscreen)
     //Retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.11.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter)
     implementation ("com.squareup.okhttp3:okhttp:4.10.0")
-    implementation ("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.10")// Проверь наличие последней версии
+    implementation ("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.10")
     //paging3
-    implementation("androidx.paging:paging-compose:3.3.2")
-    implementation("androidx.paging:paging-runtime:3.3.2")
+    implementation(libs.androidx.paging.compose)
+    implementation(libs.androidx.paging.runtime)
     //dagger
-    implementation ("com.google.dagger:hilt-android:2.52")
-    kapt ("com.google.dagger:hilt-compiler:2.52")
+    implementation (libs.hilt.android)
+    kapt (libs.hilt.compiler)
     //dataStore
-    implementation ("androidx.datastore:datastore-preferences:1.0.0-alpha01")
-    implementation("androidx.datastore:datastore-preferences-core:1.1.1")
+    implementation (libs.androidx.datastore.preference)
+    implementation(libs.androidx.datastore.preference.core)
+    //room
+    implementation (libs.androidx.room.runtime)
+    kapt (libs.androidx.room.compiler)
+    implementation (libs.androidx.room.ktx)
 
 
 

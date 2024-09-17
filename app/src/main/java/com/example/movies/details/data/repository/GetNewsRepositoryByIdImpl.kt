@@ -1,33 +1,30 @@
 package com.example.movies.details.data.repository
 
-import android.util.Log
 import com.example.movies.details.data.mapper.toNewsId
 import com.example.movies.details.data.model.NewsId
 import com.example.movies.details.domain.GetNewsRepositoryById
 import com.example.movies.shared.data.api.ApiService
-import retrofit2.HttpException
+import com.example.movies.shared.until.Result
 import java.io.IOException
 
-// GetNewsRepositoryByIdImpl.kt
 class GetNewsRepositoryByIdImpl(private val apiService: ApiService) : GetNewsRepositoryById {
-    override suspend fun getNewsById(id: Int): NewsId? {
+    override suspend fun getNewsById(id: Int): Result<NewsId> {
         return try {
             val response = apiService.getNewsId(id)
             if (response.isSuccessful) {
-                response.body()?.toNewsId()
+                val newsId = response.body()?.toNewsId()
+                if (newsId != null) {
+                    Result.Success(newsId)
+                } else {
+                    Result.Error("Response body is null")
+                }
             } else {
-                Log.e("GetNewsRepositoryByIdImpl", "Error response code: ${response.code()}")
-                null
+                Result.Error("Request failed with code: ${response.code()}")
             }
         } catch (e: IOException) {
-            Log.e("GetNewsRepositoryByIdImpl", "Network error", e)
-            null
-        } catch (e: HttpException) {
-            Log.e("GetNewsRepositoryByIdImpl", "HTTP error", e)
-            null
+            Result.Error("Network error: ${e.localizedMessage}")
         } catch (e: Exception) {
-            Log.e("GetNewsRepositoryByIdImpl", "Unknown error", e)
-            null
+            Result.Error("An unexpected error occurred: ${e.localizedMessage}")
         }
     }
 }

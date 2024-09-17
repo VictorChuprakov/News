@@ -1,5 +1,6 @@
 package com.example.movies.news.ui
 
+import NewsViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.movies.news.domain.GetNewsRepository

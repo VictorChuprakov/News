@@ -31,7 +31,7 @@ import com.example.movies.details.ui.DetailsViewModel
 import com.example.movies.shared.until.Routes
 
 @Composable
-fun HeaderDetails(navController: NavController, detailsViewModel: DetailsViewModel, news: NewsId?) {
+fun HeaderDetails(navController: NavController, detailsViewModel: DetailsViewModel, news: NewsId) {
     val isFavorite by detailsViewModel.isFavorite.collectAsState()
     Row(
         verticalAlignment = Alignment.CenterVertically,

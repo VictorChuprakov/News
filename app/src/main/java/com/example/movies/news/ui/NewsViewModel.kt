@@ -1,5 +1,3 @@
-package com.example.movies.news.ui
-
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
@@ -14,10 +12,9 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.launch
 import java.io.IOException
-
-
 
 class NewsViewModel(
     private val repository: GetNewsRepository,
@@ -30,9 +27,9 @@ class NewsViewModel(
     private val _newsError = MutableStateFlow<String?>(null)
     val newsError = _newsError.asStateFlow()
 
-    // Подписка на данные новостей с категорией и обработка ошибок
+
     val newsFlow: Flow<PagingData<News>> = _currentCategory
-        .filterNotNull() // Ожидание, что категория не null
+        .filterNotNull()
         .flatMapLatest { category ->
             repository.getNewsPager(category)
                 .catch { e ->
@@ -40,9 +37,9 @@ class NewsViewModel(
                         is IOException -> "Ошибка сети при загрузке новостей"
                         else -> "Произошла ошибка при загрузке новостей"
                     }
-                    emit(PagingData.empty()) // Возвращаем пустые данные при ошибке
+                    emit(PagingData.empty())
                 }
-                .cachedIn(viewModelScope) // Кэширование данных
+                .cachedIn(viewModelScope)
         }
 
     init {
@@ -55,11 +52,22 @@ class NewsViewModel(
 
     // Сохранение новой категории
     fun saveCategory(newCategory: String) {
-        if (_currentCategory.value != newCategory) {
-            viewModelScope.launch {
-                dataPreference.SaveCategoryState(newCategory)
+        viewModelScope.launch {
+            if (_currentCategory.value != newCategory) {
                 _currentCategory.value = newCategory
+                try {
+                    // Сохранение категории в DataStore
+                    dataPreference.SaveCategoryState(newCategory)
+                } catch (e: Exception) {
+                    // Обработка ошибок при сохранении категории
+                    _newsError.value = "Ошибка при сохранении категории"
+                }
             }
         }
+    }
+
+    // Очистка ошибки
+    fun clearError() {
+        _newsError.value = null
     }
 }

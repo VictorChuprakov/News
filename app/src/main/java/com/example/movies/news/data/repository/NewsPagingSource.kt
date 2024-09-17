@@ -24,7 +24,6 @@ class NewsPagingSource(private val apiService: ApiService, private val category:
 
             if (response.isSuccessful) {
                 val body = response.body()
-
                 if (body != null) {
                     // Преобразуем DTO в бизнес-модель
                     val croppedNews = body.toCropperNews()
