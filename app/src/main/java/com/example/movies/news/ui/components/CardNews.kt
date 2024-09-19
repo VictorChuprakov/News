@@ -39,13 +39,6 @@ import com.example.movies.common.ui.bottomNavigation.RoutesNavBottom
 fun CardNews(navController: NavController, news: News) {
     var isLoading by remember { mutableStateOf(true) }
 
-    fun onLoadingStarted() {
-        isLoading = true
-    }
-    fun onLoadingFinished() {
-        isLoading = false
-    }
-
     Card(
         modifier = Modifier
             .padding(horizontal = 10.dp, vertical = 5.dp)
@@ -77,15 +70,7 @@ fun CardNews(navController: NavController, news: News) {
                         .clip(RoundedCornerShape(10.dp)),
                     placeholder = painterResource(id = R.drawable.placeholder_image),
                     error = painterResource(id = R.drawable.placeholder_image),
-                    onLoading = {
-                        onLoadingStarted()
-                    },
-                    onSuccess = {
-                        onLoadingFinished()
-                    },
-                    onError = {
-                        onLoadingFinished()
-                    }
+
                 )
                 if (isLoading) {
                     Box(
