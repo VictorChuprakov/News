@@ -9,28 +9,20 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class FavoriteDetailsViewModel(private val databaseRepository: DatabaseRepository) : ViewModel() {
-     private val _newsDetails = MutableStateFlow<FavoriteNewEntity?>(null)
-     val newsDetails: StateFlow<FavoriteNewEntity?> = _newsDetails
+    private val _newsDetails = MutableStateFlow<FavoriteNewEntity?>(null)
+    val newsDetails: StateFlow<FavoriteNewEntity?> = _newsDetails
 
-     fun getNewsDetailsById(id: Int) {
-          viewModelScope.launch {
-               try {
-                    val favoriteNews = databaseRepository.getNewsDetailsById(id)
-                    _newsDetails.value = favoriteNews
-               } catch (e: Exception) {
-                    _newsDetails.value = null
-               }
-          }
-     }
+    fun getNewsDetailsById(id: Int) {
+        viewModelScope.launch {
+            val favoriteNews = databaseRepository.getNewsDetailsById(id)
+            _newsDetails.value = favoriteNews
+        }
+    }
 
-     fun deleteDetails(id: Int) {
-          viewModelScope.launch {
-               try {
-                    databaseRepository.deleteFavorite(id)
-                    _newsDetails.value = null // Обновляем состояние после удаления
-               } catch (e: Exception) {
-                    // Обработка ошибки удаления
-               }
-          }
-     }
+    fun deleteDetails(id: Int) {
+        viewModelScope.launch {
+            databaseRepository.deleteFavorite(id)
+            _newsDetails.value = null
+        }
+    }
 }

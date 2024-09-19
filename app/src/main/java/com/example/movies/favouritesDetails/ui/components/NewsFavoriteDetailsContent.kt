@@ -1,7 +1,5 @@
-package com.example.movies.details.ui.components
+package com.example.movies.favouritesDetails.ui.components
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
@@ -21,12 +19,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.movies.R
-import com.example.movies.details.data.model.NewsId
+import com.example.movies.common.data.room.FavoriteNewEntity
 
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun NewsContent(news: NewsId) {
+fun NewsFavoritesDetailsContent(news: FavoriteNewEntity) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -35,13 +32,12 @@ fun NewsContent(news: NewsId) {
         item {
             Text(
                 text = news.title,
-                style = MaterialTheme.typography.titleMedium.copy(
-                    fontWeight = FontWeight.Bold
-                ),
+                fontWeight = FontWeight.Bold,
                 modifier = Modifier
                     .padding(bottom = 8.dp)
                     .basicMarquee(),
                 color = MaterialTheme.colorScheme.primary
+
             )
             AsyncImage(
                 model = news.image,
@@ -51,13 +47,14 @@ fun NewsContent(news: NewsId) {
                     .aspectRatio(16 / 9f)
                     .clip(RoundedCornerShape(10.dp)),
                 placeholder = painterResource(id = R.drawable.placeholder_image),
-                error = painterResource(id = R.drawable.placeholder_image),
+                error = painterResource(id = R.drawable.placeholder_image)
             )
             Spacer(modifier = Modifier.height(10.dp))
             Text(
                 text = news.content,
                 style = MaterialTheme.typography.labelLarge,
                 color = MaterialTheme.colorScheme.primary
+
             )
         }
     }

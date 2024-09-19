@@ -1,9 +1,10 @@
-package com.example.movies.news.ui.components
+package com.example.movies.common.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,7 +21,7 @@ import com.example.movies.R
 
 
 @Composable
-fun HeaderHome() {
+fun HeaderDefault() {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -37,8 +38,9 @@ fun HeaderHome() {
                     append(stringResource(id = R.string.title_News))
                 }
             },
-            fontSize = 25.sp,
-            fontWeight = FontWeight.Bold
+            style = MaterialTheme.typography.headlineMedium.copy(
+                fontWeight = FontWeight.Bold
+            )
         )
     }
 }
