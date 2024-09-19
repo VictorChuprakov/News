@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -53,7 +54,8 @@ fun NewsContent(news: NewsId) {
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier
                     .padding(bottom = 8.dp)
-                    .basicMarquee()
+                    .basicMarquee(),
+                color = MaterialTheme.colorScheme.primary
             )
             AsyncImage(
                 model = news.image,
@@ -74,11 +76,11 @@ fun NewsContent(news: NewsId) {
                     onLoadingFinished()
                 }
             )
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(10.dp))
             Text(
                 text = news.content,
-                modifier = Modifier.padding(bottom = 16.dp),
-                fontWeight = FontWeight.Normal
+                fontWeight = FontWeight.Normal,
+                color = MaterialTheme.colorScheme.primary
             )
         }
     }

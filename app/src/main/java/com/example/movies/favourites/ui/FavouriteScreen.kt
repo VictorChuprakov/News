@@ -31,14 +31,14 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.example.movies.R
+import com.example.movies.common.data.room.DatabaseProvider
+import com.example.movies.common.ui.bottomNavigation.RoutesNavBottom
 import com.example.movies.favourites.ui.components.HeaderFavorite
-import com.example.movies.shared.data.di.RetrofitProvider
-import com.example.movies.shared.until.Routes
 
 @Composable
 fun FavoritesScreen(navController: NavHostController) {
     val favoriteViewModel: FavoriteViewModel = viewModel(
-        factory = FavoriteViewModelFactory(RetrofitProvider.databaseRepository)
+        factory = FavoriteViewModelFactory(DatabaseProvider.databaseRepository)
     )
     val favorites by favoriteViewModel.news.collectAsState()
     Column(Modifier.fillMaxSize( )) {
@@ -50,11 +50,11 @@ fun FavoritesScreen(navController: NavHostController) {
                         .padding(horizontal = 10.dp, vertical = 5.dp)
                         .fillMaxWidth()
                         .clickable {
-                            navController.navigate("${Routes.DetailsFavorite}/${favorite.id}")
+                            navController.navigate("${RoutesNavBottom.DetailsFavorite}/${favorite.id}")
                         },
                     shape = RoundedCornerShape(20.dp),
                     colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.surfaceContainer
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer
                     )
                 ) {
                     Row(
@@ -74,22 +74,21 @@ fun FavoritesScreen(navController: NavHostController) {
                                 modifier = Modifier
                                     .fillMaxSize()
                                     .clip(RoundedCornerShape(10.dp)),
-                                placeholder = painterResource(id = R.drawable.placeholder_image), // Заглушка при загрузке
-                                error = painterResource(id = R.drawable.placeholder_image), // Изображение при ошибке
+                                placeholder = painterResource(id = R.drawable.placeholder_image),
+                                error = painterResource(id = R.drawable.placeholder_image),
                             )
                         }
                         Text(
                             text = favorite.title,
-                            color = MaterialTheme.colorScheme.primary,
                             style = TextStyle(fontWeight = FontWeight.SemiBold, fontSize = 17.sp),
-                            modifier = Modifier.padding(start = 10.dp)
-                        )
+                            modifier = Modifier.padding(start = 10.dp),
+                            color = MaterialTheme.colorScheme.primary
 
+                        )
                     }
                 }
             }
         }
     }
-
 }
 

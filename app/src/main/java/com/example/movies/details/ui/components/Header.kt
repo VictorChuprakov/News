@@ -18,6 +18,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -28,7 +29,7 @@ import androidx.navigation.NavController
 import com.example.movies.R
 import com.example.movies.details.data.model.NewsId
 import com.example.movies.details.ui.DetailsViewModel
-import com.example.movies.shared.until.Routes
+import com.example.movies.common.ui.bottomNavigation.RoutesNavBottom
 
 @Composable
 fun HeaderDetails(navController: NavController, detailsViewModel: DetailsViewModel, news: NewsId) {
@@ -41,21 +42,20 @@ fun HeaderDetails(navController: NavController, detailsViewModel: DetailsViewMod
             .padding(horizontal = 10.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            IconButton(onClick = { navController.navigate(Routes.News) }) {
+            IconButton(onClick = { navController.navigate(RoutesNavBottom.News) }) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                     contentDescription = null,
-                    tint = MaterialTheme.colorScheme.primary
                 )
             }
 
             Text(
                 text = buildAnnotatedString {
                     withStyle(style = SpanStyle(color = colorResource(id = R.color.FoxBlue))) {
-                        append("Fox")
+                        append(stringResource(id = R.string.title_Fox))
                     }
                     withStyle(style = SpanStyle(color = colorResource(id = R.color.FoxRed))) {
-                        append("News")
+                        append(stringResource(id = R.string.title_News))
                     }
                 },
                 fontSize = 20.sp,

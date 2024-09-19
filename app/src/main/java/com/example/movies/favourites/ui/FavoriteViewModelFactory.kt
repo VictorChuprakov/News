@@ -2,7 +2,7 @@ package com.example.movies.favourites.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.movies.shared.domain.DatabaseRepository
+import com.example.movies.common.repository.DatabaseRepository
 
 class FavoriteViewModelFactory(
     private val databaseRepository: DatabaseRepository

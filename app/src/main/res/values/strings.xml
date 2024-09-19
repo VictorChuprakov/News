@@ -17,4 +17,13 @@
     <string name="crime">Crime</string>
     <string name="religion">Religion</string>
     <string name="international_relations">International Relations</string>
+
+    <string name="title_Fox">Fox</string>
+    <string name="title_News">News</string>
+
+    <string name="label_news">News</string>
+    <string name="label_favorite">Favorite</string>
+
+    <string name="no_news">No news found</string>
+
 </resources>

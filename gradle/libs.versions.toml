@@ -17,7 +17,7 @@ navigationCompose = "2.8.0"
 pagingCompose = "3.3.2"
 retrofit = "2.11.0"
 room = "2.6.1"
- dataStore = "1.1.1"
+dataStore = "1.1.1"
 
 
 [libraries]
@@ -51,13 +51,6 @@ coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose"
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "daggerVersion" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "daggerVersion" }
-
-
-
-
-
-
-
 
 
 

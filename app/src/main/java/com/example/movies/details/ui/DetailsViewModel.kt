@@ -2,11 +2,11 @@ package com.example.movies.details.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.movies.common.data.api.State
+import com.example.movies.common.data.room.FavoriteNewEntity
+import com.example.movies.common.repository.DatabaseRepository
 import com.example.movies.details.data.model.NewsId
 import com.example.movies.details.domain.GetNewsRepositoryById
-import com.example.movies.shared.data.room.FavoriteNewEntity
-import com.example.movies.shared.domain.DatabaseRepository
-import com.example.movies.shared.until.Result
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -17,46 +17,40 @@ class DetailsViewModel(
     private val databaseRepository: DatabaseRepository
 ) : ViewModel() {
 
-    private val _newsById = MutableStateFlow<NewsId?>(null)
-    val newsById = _newsById.asStateFlow()
 
-
-    private val _error = MutableStateFlow<String?>(null)
-    val error = _error.asStateFlow()
+    private val _state = MutableStateFlow<State<NewsId>>(State.Loading)
+    val state: StateFlow<State<NewsId>> get() = _state.asStateFlow()
 
     private val _isFavorite = MutableStateFlow(false)
-    val isFavorite: StateFlow<Boolean> get() = _isFavorite
+    val isFavorite: StateFlow<Boolean> get() = _isFavorite.asStateFlow()
 
     fun getNewsById(id: Int) {
         viewModelScope.launch {
+            _state.value = State.Loading
             when (val result = repository.getNewsById(id)) {
-                is Result.Success -> {
-                    _newsById.value = result.data
+                is State.Success -> {
                     checkIfFavorite(result.data.id)
+                    _state.value = State.Success(result.data)
                 }
-                is Result.Error -> {
-                    _error.value = "Произошла ошибка:"
+                is State.Error -> {
+                    _state.value = State.Error(result.error)
                 }
+
+                State.Loading -> TODO()
             }
         }
     }
 
-
-
-
     private suspend fun checkIfFavorite(newsId: Int) {
         _isFavorite.value = databaseRepository.isFavorite(newsId)
     }
-
 
     fun toggleFavorite(news: NewsId?) {
         viewModelScope.launch {
             news?.let {
                 val isCurrentlyFavorite = _isFavorite.value
                 if (isCurrentlyFavorite) {
-                    databaseRepository.delete(
-                        it.id
-                    )
+                    databaseRepository.delete(it.id)
                 } else {
                     databaseRepository.insert(
                         FavoriteNewEntity(
@@ -65,18 +59,11 @@ class DetailsViewModel(
                             title = it.title,
                             content = it.content,
                             image = it.image,
-                            createdAt = it.createdAt,
-                            link = it.link
                         )
                     )
                 }
                 _isFavorite.value = !isCurrentlyFavorite
             }
         }
-    }
-
-
-    fun clearError() {
-        _error.value = null
     }
 }

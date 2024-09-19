@@ -2,8 +2,8 @@ package com.example.movies.details.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.movies.common.repository.DatabaseRepository
 import com.example.movies.details.domain.GetNewsRepositoryById
-import com.example.movies.shared.domain.DatabaseRepository
 
 class DetailsViewModelFactory(
     private val repository: GetNewsRepositoryById,

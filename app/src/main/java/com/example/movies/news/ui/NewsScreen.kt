@@ -5,7 +5,6 @@ import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -17,8 +16,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.movies.news.ui.components.HeaderHome
 import com.example.movies.news.ui.components.PagerCategory
-import com.example.movies.shared.data.dataprefence.DataPreference
-import com.example.movies.shared.data.di.RetrofitProvider
+import com.example.movies.common.data.dataprefence.DataPreference
+import com.example.movies.common.data.api.RetrofitProvider
 
 
 @Composable

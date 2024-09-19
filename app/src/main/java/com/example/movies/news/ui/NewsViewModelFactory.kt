@@ -3,8 +3,8 @@ package com.example.movies.news.ui
 import NewsViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.movies.common.data.dataprefence.DataPreference
 import com.example.movies.news.domain.GetNewsRepository
-import com.example.movies.shared.data.dataprefence.DataPreference
 
 class NewsViewModelFactory(
     private val repository: GetNewsRepository,

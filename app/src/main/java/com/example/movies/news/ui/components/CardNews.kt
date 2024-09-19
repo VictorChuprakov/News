@@ -32,9 +32,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.movies.R
-import com.example.movies.news.data.NewsDTO
 import com.example.movies.news.data.model.News
-import com.example.movies.shared.until.Routes
+import com.example.movies.common.ui.bottomNavigation.RoutesNavBottom
 
 @Composable
 fun CardNews(navController: NavController, news: News) {
@@ -52,11 +51,11 @@ fun CardNews(navController: NavController, news: News) {
             .padding(horizontal = 10.dp, vertical = 5.dp)
             .fillMaxWidth()
             .clickable {
-                navController.navigate("${Routes.Details}/${news.id}")
+                navController.navigate("${RoutesNavBottom.Details}/${news.id}")
             },
         shape = RoundedCornerShape(20.dp),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainer
+            containerColor = MaterialTheme.colorScheme.secondaryContainer
         )
     ) {
         Row(
@@ -69,7 +68,6 @@ fun CardNews(navController: NavController, news: News) {
                     .size(100.dp)
                     .clip(RoundedCornerShape(10.dp))
             ) {
-                // Проверка и отображение изображения
                 AsyncImage(
                     model = news.image,
                     contentDescription = "news image",
@@ -77,8 +75,8 @@ fun CardNews(navController: NavController, news: News) {
                     modifier = Modifier
                         .fillMaxSize()
                         .clip(RoundedCornerShape(10.dp)),
-                    placeholder = painterResource(id = R.drawable.placeholder_image), // Заглушка при загрузке
-                    error = painterResource(id = R.drawable.placeholder_image), // Изображение при ошибке
+                    placeholder = painterResource(id = R.drawable.placeholder_image),
+                    error = painterResource(id = R.drawable.placeholder_image),
                     onLoading = {
                         onLoadingStarted()
                     },
@@ -102,9 +100,9 @@ fun CardNews(navController: NavController, news: News) {
             }
             Text(
                 text = news.title,
-                color = MaterialTheme.colorScheme.primary,
                 style = TextStyle(fontWeight = FontWeight.SemiBold, fontSize = 17.sp),
-                modifier = Modifier.padding(start = 10.dp)
+                modifier = Modifier.padding(start = 10.dp),
+                color = MaterialTheme.colorScheme.primary
             )
         }
     }

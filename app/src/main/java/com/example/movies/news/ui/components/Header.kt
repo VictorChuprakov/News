@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -30,10 +31,10 @@ fun HeaderHome() {
         Text(
             text = buildAnnotatedString {
                 withStyle(style = SpanStyle(color = colorResource(id = R.color.FoxBlue))) {
-                    append("Fox")
+                    append(stringResource(id = R.string.title_Fox))
                 }
                 withStyle(style = SpanStyle(color = colorResource(id = R.color.FoxRed))) {
-                    append("News")
+                    append(stringResource(id = R.string.title_News))
                 }
             },
             fontSize = 25.sp,
