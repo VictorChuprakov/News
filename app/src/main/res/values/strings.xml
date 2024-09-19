@@ -26,4 +26,11 @@
 
     <string name="no_news">No news found</string>
 
+    <string name="network_error">Network error occurred</string>
+    <string name="responce_null">Response body is null</string>
+    <string name="request_failed">Request failed</string>
+    <string name="unexpected_error">An unexpected error occurred</string>
+
+
+
 </resources>

@@ -1,12 +1,11 @@
 package com.example.movies.details.data.repository
 
 import com.example.movies.common.data.api.ApiError
+import com.example.movies.common.data.api.ApiService
+import com.example.movies.common.data.api.State
 import com.example.movies.details.data.mapper.toNewsId
 import com.example.movies.details.data.model.NewsId
 import com.example.movies.details.domain.GetNewsRepositoryById
-import com.example.movies.common.data.api.ApiService
-import com.example.movies.common.data.api.State
-import kotlinx.coroutines.delay
 import java.io.IOException
 
 class GetNewsRepositoryByIdImpl(private val apiService: ApiService) : GetNewsRepositoryById {

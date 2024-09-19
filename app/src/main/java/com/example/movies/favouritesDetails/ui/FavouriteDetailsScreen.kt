@@ -28,6 +28,7 @@ import com.example.movies.R
 import com.example.movies.common.data.room.DatabaseProvider
 import com.example.movies.favouritesDetails.ui.FavoriteDetailsViewModel
 import com.example.movies.favouritesDetails.ui.components.HeaderDetailsFavorite
+import com.example.movies.favouritesDetails.ui.components.NewsFavoritesDetailsContent
 
 @Composable
 fun FavoritesDetailsScreen(navController: NavHostController, id: Int) {
@@ -48,41 +49,7 @@ fun FavoritesDetailsScreen(navController: NavHostController, id: Int) {
                 favoriteDetailsViewModel,
                 news.id
             )
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(16.dp)
-            ) {
-                item {
-                    Text(
-                        text = news.title,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier
-                            .padding(bottom = 8.dp)
-                            .basicMarquee(),
-                        color = MaterialTheme.colorScheme.primary
-
-                    )
-                    AsyncImage(
-                        model = news.image,
-                        contentDescription = "news image",
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier
-                            .aspectRatio(16 / 9f)
-                            .clip(RoundedCornerShape(10.dp)),
-                        placeholder = painterResource(id = R.drawable.placeholder_image),
-                        error = painterResource(id = R.drawable.placeholder_image)
-                    )
-                    Spacer(modifier = Modifier.height(10.dp))
-                    Text(
-                        text = news.content,
-                        modifier = Modifier.padding(bottom = 16.dp),
-                        fontWeight = FontWeight.Normal,
-                        color = MaterialTheme.colorScheme.primary
-
-                    )
-                }
-            }
+            NewsFavoritesDetailsContent(news)
         }
     }
 }

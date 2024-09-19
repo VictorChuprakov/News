@@ -30,7 +30,7 @@ fun BottomNavigationBar(navController: NavHostController) {
                 icon = {
                     Icon(
                         imageVector = if (currentRoute == navItem.route) navItem.selectedIcon else navItem.unselectedIcon,
-                        contentDescription = "icon bottomNavigation",
+                        contentDescription = null,
                         modifier = if (currentRoute == navItem.route) Modifier
                             .scale(1.0f)
                             .size(25.dp) else Modifier

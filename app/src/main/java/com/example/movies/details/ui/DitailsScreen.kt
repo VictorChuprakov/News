@@ -21,10 +21,10 @@ import com.example.movies.common.data.api.ApiError
 import com.example.movies.common.data.api.RetrofitProvider
 import com.example.movies.common.data.api.State
 import com.example.movies.common.data.room.DatabaseProvider
-import com.example.movies.common.ui.ShowToast
+import com.example.movies.common.ui.components.ShowToast
 import com.example.movies.details.data.model.NewsId
+import com.example.movies.details.ui.components.Header
 import com.example.movies.details.ui.components.HeaderDetails
-import com.example.movies.details.ui.components.HeaderError
 import com.example.movies.details.ui.components.NewsContent
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -45,7 +45,7 @@ fun DetailsScreen(navController: NavController, id: Int) {
     Column(modifier = Modifier.fillMaxSize()) {
         when (state) {
             is State.Loading -> {
-                HeaderError(navController)
+                Header(navController)
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                     CircularProgressIndicator()
                 }
@@ -64,12 +64,12 @@ fun DetailsScreen(navController: NavController, id: Int) {
             is State.Error -> {
                 val error = (state as State.Error).error
                 val errorMessage = when (error) {
-                    ApiError.NETWORK_ERROR -> "Network error occurred"
-                    ApiError.RESPONSE_NULL -> "Response body is null"
-                    ApiError.REQUEST_FAILED -> "Request failed"
-                    ApiError.UNEXPECTED_ERROR -> "An unexpected error occurred"
+                    ApiError.NETWORK_ERROR -> stringResource(id = R.string.network_error)
+                    ApiError.RESPONSE_NULL ->  stringResource(id = R.string.responce_null)
+                    ApiError.REQUEST_FAILED ->  stringResource(id = R.string.request_failed)
+                    ApiError.UNEXPECTED_ERROR ->  stringResource(id = R.string.unexpected_error)
                 }
-                HeaderError(navController)
+                Header(navController = navController)
                 ShowToast(errorMessage)
             }
         }

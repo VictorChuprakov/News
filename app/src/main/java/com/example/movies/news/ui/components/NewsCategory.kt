@@ -4,6 +4,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
+import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import com.example.movies.news.data.model.News
 

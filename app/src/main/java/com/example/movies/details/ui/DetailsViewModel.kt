@@ -2,6 +2,7 @@ package com.example.movies.details.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.movies.common.data.api.ApiError
 import com.example.movies.common.data.api.State
 import com.example.movies.common.data.room.FavoriteNewEntity
 import com.example.movies.common.repository.DatabaseRepository
@@ -17,12 +18,11 @@ class DetailsViewModel(
     private val databaseRepository: DatabaseRepository
 ) : ViewModel() {
 
-
     private val _state = MutableStateFlow<State<NewsId>>(State.Loading)
-    val state: StateFlow<State<NewsId>> get() = _state.asStateFlow()
+    val state: StateFlow<State<NewsId>> = _state.asStateFlow()
 
     private val _isFavorite = MutableStateFlow(false)
-    val isFavorite: StateFlow<Boolean> get() = _isFavorite.asStateFlow()
+    val isFavorite: StateFlow<Boolean> = _isFavorite.asStateFlow()
 
     fun getNewsById(id: Int) {
         viewModelScope.launch {
@@ -35,11 +35,13 @@ class DetailsViewModel(
                 is State.Error -> {
                     _state.value = State.Error(result.error)
                 }
-
-                State.Loading -> TODO()
+                else -> {
+                    _state.value = State.Error(ApiError.UNEXPECTED_ERROR)
+                }
             }
         }
     }
+
 
     private suspend fun checkIfFavorite(newsId: Int) {
         _isFavorite.value = databaseRepository.isFavorite(newsId)
@@ -58,7 +60,7 @@ class DetailsViewModel(
                             apiId = it.id,
                             title = it.title,
                             content = it.content,
-                            image = it.image,
+                            image = it.image
                         )
                     )
                 }
@@ -67,3 +69,4 @@ class DetailsViewModel(
         }
     }
 }
+

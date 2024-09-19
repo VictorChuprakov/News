@@ -1,8 +1,13 @@
 package com.example.movies.news.ui.components
 
-import NewsViewModel
+import android.net.http.HttpException
+import android.os.Build
+import androidx.annotation.RequiresExtension
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.Tab
@@ -14,26 +19,34 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.example.movies.R
+import com.example.movies.common.ui.components.ShowToast
+import com.example.movies.news.ui.NewsViewModel
+import java.io.IOException
 
 
+@RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
 fun PagerCategory(navController: NavController, newsViewModel: NewsViewModel) {
     val listCategory = NewsCategoryClass.entries
-    var selectedTabIndex by remember { mutableIntStateOf(0) }
     val currentCategory by newsViewModel.currentCategory.collectAsState()
+    var selectedTabIndex by remember { mutableIntStateOf(0) }
     val listState = rememberLazyListState()
-    val lazyPagingItems = newsViewModel.newsFlow.collectAsLazyPagingItems()
+    val newsState = newsViewModel.newsFlow.collectAsLazyPagingItems()
 
     LaunchedEffect(currentCategory) {
         val index = listCategory.indexOfFirst { it.apiName == currentCategory }
         if (index != -1 && index != selectedTabIndex) {
             selectedTabIndex = index
         }
-        listState.scrollToItem(0)
+        listState.animateScrollToItem(0)
     }
 
     Column {
@@ -45,13 +58,38 @@ fun PagerCategory(navController: NavController, newsViewModel: NewsViewModel) {
                         if (index != selectedTabIndex) {
                             selectedTabIndex = index
                             newsViewModel.saveCategory(category.apiName)
-                            lazyPagingItems.refresh()
                         }
                     },
-                    text = { Text(text = stringResource(id = category.displayNameResId), color = MaterialTheme.colorScheme.primary) }
+                    text = {
+                        Text(
+                            text = stringResource(id = category.displayNameResId),
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                    }
                 )
             }
         }
-        NewsCategory(navController, lazyPagingItems, listState)
+        when (val refreshState = newsState.loadState.refresh) {
+            is LoadState.Loading -> {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator()
+                }
+            }
+            is LoadState.Error -> {
+                val error = refreshState.error
+                val errorMessage = when (error) {
+                    is IOException -> stringResource(id = R.string.network_error)
+                    is HttpException -> stringResource(id = R.string.request_failed)
+                    else -> stringResource(id = R.string.unexpected_error)
+                }
+               ShowToast(message = errorMessage)
+            }
+            else -> {
+                NewsCategory(navController, newsState, listState)
+            }
+        }
     }
 }
