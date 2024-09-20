@@ -10,7 +10,10 @@ import androidx.annotation.RequiresApi
 import androidx.navigation.compose.rememberNavController
 import com.example.compose.AppTheme
 import com.example.movies.common.ui.bottomNavigation.NavHostContainer
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")

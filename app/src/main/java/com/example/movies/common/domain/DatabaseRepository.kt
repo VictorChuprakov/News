@@ -1,4 +1,4 @@
-package com.example.movies.common.repository
+package com.example.movies.common.domain
 
 import com.example.movies.common.data.room.FavoriteNewEntity
 import kotlinx.coroutines.flow.Flow

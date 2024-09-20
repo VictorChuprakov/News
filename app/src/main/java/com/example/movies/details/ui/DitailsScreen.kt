@@ -14,13 +14,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.movies.R
 import com.example.movies.common.data.api.ApiError
-import com.example.movies.common.data.api.RetrofitProvider
 import com.example.movies.common.data.api.State
-import com.example.movies.common.data.room.DatabaseProvider
 import com.example.movies.common.ui.components.ShowToast
 import com.example.movies.details.data.model.NewsId
 import com.example.movies.details.ui.components.Header
@@ -30,12 +28,7 @@ import com.example.movies.details.ui.components.NewsContent
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun DetailsScreen(navController: NavController, id: Int) {
-    val detailsViewModel: DetailsViewModel = viewModel(
-        factory = DetailsViewModelFactory(
-            RetrofitProvider.newsIdRepository,
-            DatabaseProvider.databaseRepository
-        )
-    )
+    val detailsViewModel: DetailsViewModel = hiltViewModel()
     val state by detailsViewModel.state.collectAsState()
 
     LaunchedEffect(id) {

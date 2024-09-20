@@ -1,8 +1,8 @@
-package com.example.movies.common.domain
+package com.example.movies.common.repository
 
 import com.example.movies.common.data.room.FavoriteNewEntity
 import com.example.movies.common.data.room.FavoriteNewsDao
-import com.example.movies.common.repository.DatabaseRepository
+import com.example.movies.common.domain.DatabaseRepository
 import kotlinx.coroutines.flow.Flow
 
 class DatabaseRepositoryImpl(private val favoriteNewsDao: FavoriteNewsDao): DatabaseRepository {
