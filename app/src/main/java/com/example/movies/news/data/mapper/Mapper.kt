@@ -1,8 +1,8 @@
 package com.example.movies.news.data.mapper
 
-import com.example.movies.news.data.CroppedNewsDTO
 import com.example.movies.news.data.NewsDTO
 import com.example.movies.news.data.model.CroppedNews
+import com.example.movies.news.data.model.CroppedNewsDTO
 import com.example.movies.news.data.model.News
 
 fun CroppedNewsDTO.toCropperNews(): CroppedNews {

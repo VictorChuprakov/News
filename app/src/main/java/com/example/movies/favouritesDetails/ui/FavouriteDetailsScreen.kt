@@ -1,4 +1,4 @@
-package com.example.movies.favourites.ui
+package com.example.movies.favouritesDetails.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize

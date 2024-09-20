@@ -1,7 +1,7 @@
 package com.example.movies.common.data.api
 
 import com.example.movies.details.data.model.NewsIdDTO
-import com.example.movies.news.data.CroppedNewsDTO
+import com.example.movies.news.data.model.CroppedNewsDTO
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

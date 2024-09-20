@@ -1,7 +1,6 @@
 package com.example.movies.common.data.dataprefence
 
 import android.content.Context
-import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
@@ -18,7 +17,6 @@ class DataPreference(private val context: Context) {
     }
 
     suspend fun SaveCategoryState(category: String) {
-        Log.d("DataPreference", "Saving category state: $category")
         context.dataStore.edit { preferences ->
             preferences[CATEGORY_STATE] = category
         }
@@ -27,6 +25,6 @@ class DataPreference(private val context: Context) {
     val categoryState: Flow<String> = context.dataStore.data
         .map { preferences ->
             preferences[CATEGORY_STATE] ?: "politics"
-        }
+    }
 }
 

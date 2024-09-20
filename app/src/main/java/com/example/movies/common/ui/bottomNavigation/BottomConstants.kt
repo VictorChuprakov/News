@@ -11,13 +11,13 @@ object BottomConstants {
     val BottomNavItems = listOf(
         BottomNavItem(
             label = R.string.label_news,
-            route = RoutesNavBottom.News,
+            route = RoutesNavBottom.news,
             selectedIcon = Icons.AutoMirrored.Filled.Feed,
             unselectedIcon = Icons.AutoMirrored.Outlined.Feed
         ),
         BottomNavItem(
             label = R.string.label_favorite,
-            route = RoutesNavBottom.Favorite,
+            route = RoutesNavBottom.favorite,
             selectedIcon = Icons.Filled.Bookmark,
             unselectedIcon = Icons.Outlined.BookmarkBorder
         )

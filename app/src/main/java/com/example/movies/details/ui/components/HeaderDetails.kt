@@ -24,7 +24,6 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.movies.R
 import com.example.movies.details.data.model.NewsId
@@ -42,7 +41,7 @@ fun HeaderDetails(navController: NavController, detailsViewModel: DetailsViewMod
             .padding(horizontal = 10.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            IconButton(onClick = { navController.navigate(RoutesNavBottom.News) }) {
+            IconButton(onClick = { navController.navigate(RoutesNavBottom.news) }) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                     contentDescription = null,

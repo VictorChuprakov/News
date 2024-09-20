@@ -1,7 +1,9 @@
-package com.example.movies.common.data.room
+package com.example.movies.common.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.movies.common.data.room.FavoriteNewsDao
+import com.example.movies.common.data.room.NewsDatabase
 import com.example.movies.common.repository.DatabaseRepositoryImpl
 import com.example.movies.common.domain.DatabaseRepository
 import dagger.Module
@@ -27,7 +29,7 @@ object DatabaseModule {
     }
 
     @Provides
-    fun provideFavoriteNewsDao(database: NewsDatabase): FavoriteNewsDao{
+    fun provideFavoriteNewsDao(database: NewsDatabase): FavoriteNewsDao {
         return database.favoriteNewsDao()
     }
 

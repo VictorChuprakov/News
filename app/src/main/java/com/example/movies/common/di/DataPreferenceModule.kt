@@ -1,6 +1,7 @@
-package com.example.movies.common.data.dataprefence
+package com.example.movies.common.di
 
 import android.content.Context
+import com.example.movies.common.data.dataprefence.DataPreference
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +16,7 @@ object DataPreferenceModule {
 
     @Provides
     @Singleton
-    fun provideDataPreference(@ApplicationContext context: Context):DataPreference{
+    fun provideDataPreference(@ApplicationContext context: Context): DataPreference {
         return DataPreference(context)
     }
 }

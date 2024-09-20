@@ -45,7 +45,7 @@ fun CardNews(
             .padding(horizontal = 10.dp, vertical = 5.dp)
             .fillMaxWidth()
             .clickable {
-                navController.navigate("${RoutesNavBottom.Details}/${news.id}")
+                navController.navigate("${RoutesNavBottom.details}/${news.id}")
             },
         shape = RoundedCornerShape(20.dp),
         colors = CardDefaults.cardColors(

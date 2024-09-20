@@ -1,8 +1,8 @@
 package com.example.movies.common.ui.bottomNavigation
 
 object RoutesNavBottom {
-    const val News = "news"
-    const val Favorite = "favorite"
-    const val Details = "details"
-    const val DetailsFavorite = "details_favorite"
+    const val news = "news"
+    const val favorite = "favorite"
+    const val details = "details"
+    const val detailsfavorite = "details_favorite"
 }

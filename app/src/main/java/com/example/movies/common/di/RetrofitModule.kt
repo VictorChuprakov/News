@@ -1,5 +1,7 @@
-package com.example.movies.common.data.api
+package com.example.movies.common.di
 
+import com.example.movies.common.data.api.ApiConstants
+import com.example.movies.common.data.api.ApiService
 import com.example.movies.details.data.repository.GetNewsRepositoryByIdImpl
 import com.example.movies.details.domain.GetNewsRepositoryById
 import com.example.movies.news.data.repository.GetNewsRepositoryImpl
@@ -19,18 +21,18 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object RetrofitModule {
 
-    private val loggingInterceptor = HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.BODY
-    }
-
-    private val client = OkHttpClient.Builder()
-        .addInterceptor(loggingInterceptor)
-        .build()
-
-
     @Provides
     @Singleton
     fun providerRetrofit(): Retrofit{
+
+        val loggingInterceptor = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+
+        val client = OkHttpClient.Builder()
+            .addInterceptor(loggingInterceptor)
+            .build()
+
         return Retrofit.Builder()
             .baseUrl(ApiConstants.BASE_URL)
             .client(client)
@@ -41,7 +43,7 @@ object RetrofitModule {
 
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit):ApiService{
+    fun provideApiService(retrofit: Retrofit): ApiService {
         return retrofit.create(ApiService::class.java)
     }
 

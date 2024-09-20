@@ -1,7 +1,6 @@
-package com.example.movies.news.data
+package com.example.movies.news.data.model
 
-import com.example.movies.news.data.model.News
-
+import com.example.movies.news.data.NewsDTO
 
 data class CroppedNewsDTO(
     val currentPage: Int? = null,

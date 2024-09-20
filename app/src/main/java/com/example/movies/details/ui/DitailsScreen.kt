@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -45,14 +44,8 @@ fun DetailsScreen(navController: NavController, id: Int) {
             }
             is State.Success -> {
                 val news = (state as State.Success<NewsId>).data
-                if (news != null) {
-                    HeaderDetails(navController, detailsViewModel, news)
-                    NewsContent(news)
-                } else {
-                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                        Text(stringResource(id = R.string.no_news))
-                    }
-                }
+                HeaderDetails(navController, detailsViewModel, news)
+                NewsContent(news)
             }
             is State.Error -> {
                 val error = (state as State.Error).error

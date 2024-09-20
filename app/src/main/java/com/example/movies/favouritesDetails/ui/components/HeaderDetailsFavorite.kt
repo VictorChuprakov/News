@@ -21,7 +21,6 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.movies.R
 import com.example.movies.favouritesDetails.ui.FavoriteDetailsViewModel
@@ -41,7 +40,7 @@ fun HeaderDetailsFavorite(
             .padding(horizontal = 10.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            IconButton(onClick = { navController.navigate(RoutesNavBottom.Favorite) }) {
+            IconButton(onClick = { navController.navigate(RoutesNavBottom.favorite) }) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                     contentDescription = null,
@@ -64,7 +63,7 @@ fun HeaderDetailsFavorite(
         }
         IconButton(onClick = {
             favoriteDetailsViewModel.deleteDetails(id)
-            navController.navigate(RoutesNavBottom.Favorite)
+            navController.navigate(RoutesNavBottom.favorite)
         }) {
             Icon(
                 imageVector = Icons.Default.Delete,

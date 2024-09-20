@@ -37,7 +37,7 @@ fun NewsFavoritesScreen(navController: NavController, favorites: List<FavoriteNe
                     .padding(horizontal = 10.dp, vertical = 5.dp)
                     .fillMaxWidth()
                     .clickable {
-                        navController.navigate("${RoutesNavBottom.DetailsFavorite}/${favorite.id}")
+                        navController.navigate("${RoutesNavBottom.detailsfavorite}/${favorite.id}")
                     },
                 shape = RoundedCornerShape(20.dp),
                 colors = CardDefaults.cardColors(

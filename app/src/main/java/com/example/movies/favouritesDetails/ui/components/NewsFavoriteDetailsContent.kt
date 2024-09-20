@@ -21,7 +21,6 @@ import coil.compose.AsyncImage
 import com.example.movies.R
 import com.example.movies.common.data.room.FavoriteNewEntity
 
-
 @Composable
 fun NewsFavoritesDetailsContent(news: FavoriteNewEntity) {
     LazyColumn(

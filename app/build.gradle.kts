@@ -63,8 +63,8 @@ dependencies {
     //Retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter)
-    implementation ("com.squareup.okhttp3:okhttp:4.10.0")
-    implementation ("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.10")
+    implementation (libs.okhttp)
+    implementation (libs.logging.interceptor)
     //paging3
     implementation(libs.androidx.paging.compose)
     implementation(libs.androidx.paging.runtime)
@@ -79,8 +79,6 @@ dependencies {
     implementation (libs.androidx.room.runtime)
     kapt (libs.androidx.room.compiler)
     implementation (libs.androidx.room.ktx)
-
-
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
