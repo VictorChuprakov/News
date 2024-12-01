@@ -16,7 +16,7 @@ class DataPreference(private val context: Context) {
         private val CATEGORY_STATE = stringPreferencesKey("category_state")
     }
 
-    suspend fun SaveCategoryState(category: String) {
+    suspend fun saveCategoryState(category: String) {
         context.dataStore.edit { preferences ->
             preferences[CATEGORY_STATE] = category
         }

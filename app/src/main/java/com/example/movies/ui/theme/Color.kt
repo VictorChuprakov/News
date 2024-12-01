@@ -1,79 +1,56 @@
-package com.example.compose
+package com.example.movies.ui.theme
 import androidx.compose.ui.graphics.Color
 
-val primaryLight = Color(0xFF151515)
-val onPrimaryLight = Color(0xFFFFFFFF)
-val primaryContainerLight = Color(0xFF343434)
-val onPrimaryContainerLight = Color(0xFFC5C3C2)
-val secondaryLight = Color(0xFF000000)
+val primaryLight = Color(0xFF22242F)//Для основного текста
+val onPrimaryLight = Color(0xFFF3F4F6)
+val primaryContainerLight = Color(0xFFF98121) //Для контейнеров(кнопки,иконки)
+val onPrimaryContainerLight = Color(0xFFFFFFFF) //Для внутренностей кнопок(кнопки,иконки)
+
+val secondaryLight = Color(0xFF7C82A1) //Для вторичного текста
 val onSecondaryLight = Color(0xFFFFFFFF)
-val secondaryContainerLight = Color(0xFF262626)
-val onSecondaryContainerLight = Color(0xFFB1B1B1)
-val tertiaryLight = Color(0xFF000000)
-val onTertiaryLight = Color(0xFFFFFFFF)
-val tertiaryContainerLight = Color(0xFF242626)
-val onTertiaryContainerLight = Color(0xFFB0B1B1)
-val errorLight = Color(0xFFB81F1E)
-val onErrorLight = Color(0xFFFFFFFF)
-val errorContainerLight = Color(0xFFFF6E61)
-val onErrorContainerLight = Color(0xFF270001)
-val backgroundLight = Color(0xFFFDF8F8)
-val onBackgroundLight = Color(0xFF1C1B1B)
-val surfaceLight = Color(0xFFFDF8F8)
-val onSurfaceLight = Color(0xFF1C1B1B)
-val surfaceVariantLight = Color(0xFFE0E3E3)
-val onSurfaceVariantLight = Color(0xFF444748)
-val outlineLight = Color(0xFF747878)
-val outlineVariantLight = Color(0xFFC4C7C7)
-val scrimLight = Color(0xFF000000)
-val inverseSurfaceLight = Color(0xFF313030)
-val inverseOnSurfaceLight = Color(0xFFF4F0EF)
-val inversePrimaryLight = Color(0xFFC8C6C5)
-val surfaceDimLight = Color(0xFFDDD9D8)
-val surfaceBrightLight = Color(0xFFFDF8F8)
-val surfaceContainerLowestLight = Color(0xFFFFFFFF)
-val surfaceContainerLowLight = Color(0xFFF7F3F2)
-val surfaceContainerLight = Color(0xFFF1EDEC)
-val surfaceContainerHighLight = Color(0xFFEBE7E7)
-val surfaceContainerHighestLight = Color(0xFFE5E2E1)
+val secondaryContainerLight = Color(0xFFF3F4F6) //Для вторичных контейнеров(кнопки,иконки)
+val onSecondaryContainerLight = Color(0xFF7C82A1) //Для вторичных внутренностей кнопок(кнопки,иконки)
+
+val tertiaryLight = Color(0xFF22242F)
+
+
+val backgroundLight = Color(0xFFFFFFFF)
+val onBackgroundLight = Color(0xFF281716)
+
+val surfaceLight = Color(0x66FFFFFF)
+val onSurfaceLight = Color(0xFF281716)
+val surfaceVariantLight = Color(0xFFFFDAD7)
+val onSurfaceVariantLight = Color(0xFF5D3F3E)
+
+val outlineLight = Color(0x80E0E0E0)
 
 
 
-val primaryDark = Color(0xFFC8C6C5)
-val onPrimaryDark = Color(0xFF303030)
-val primaryContainerDark = Color(0xFF1E1E1E)
-val onPrimaryContainerDark = Color(0xFFAAA9A8)
-val secondaryDark = Color(0xFFC6C6C6)
-val onSecondaryDark = Color(0xFF303030)
-val secondaryContainerDark = Color(0xFF000000)
-val onSecondaryContainerDark = Color(0xFF969696)
-val tertiaryDark = Color(0xFFC6C6C6)
-val onTertiaryDark = Color(0xFF2F3131)
-val tertiaryContainerDark = Color(0xFF0D0F0F)
-val onTertiaryContainerDark = Color(0xFF9C9D9D)
-val errorDark = Color(0xFFFFB4AB)
-val onErrorDark = Color(0xFF690005)
-val errorContainerDark = Color(0xFFD83831)
-val onErrorContainerDark = Color(0xFFFFFFFF)
+val primaryDark = Color(0xFFF3F4F6) //Для основного текста
+val onPrimaryDark = Color(0xFFF3F4F6)
+val primaryContainerDark = Color(0xFFF98121) //Для контейнеров(кнопки,иконки)
+val onPrimaryContainerDark = Color(0xFFFFFFFF) //Для внутренностей кнопок(кнопки,иконки)
+
+val secondaryDark = Color(0xFFB4B5C1) //Для вторичного текста
+val onSecondaryDark = Color(0xFF002F65)
+val secondaryContainerDark = Color(0xFF181818) //Для вторичных контейнеров(кнопки,иконки)
+val onSecondaryContainerDark = Color(0xFF7C82A1) //Для вторичных внутренностей кнопок(кнопки,иконки)
+
+val tertiaryDark = Color(0xFF22242F)
+
+
 val backgroundDark = Color(0xFF141313)
-val onBackgroundDark = Color(0xFFE5E2E1)
-val surfaceDark = Color(0xFF141313)
-val onSurfaceDark = Color(0xFFE5E2E1)
-val surfaceVariantDark = Color(0xFF444748)
-val onSurfaceVariantDark = Color(0xFFC4C7C7)
-val outlineDark = Color(0xFF8E9192)
-val outlineVariantDark = Color(0xFF444748)
-val scrimDark = Color(0xFF000000)
-val inverseSurfaceDark = Color(0xFFE5E2E1)
-val inverseOnSurfaceDark = Color(0xFF313030)
-val inversePrimaryDark = Color(0xFF5F5E5E)
-val surfaceDimDark = Color(0xFF141313)
-val surfaceBrightDark = Color(0xFF3A3939)
-val surfaceContainerLowestDark = Color(0xFF0E0E0E)
-val surfaceContainerLowDark = Color(0xFF1C1B1B)
-val surfaceContainerDark = Color(0xFF201F1F)
-val surfaceContainerHighDark = Color(0xFF2B2A2A)
-val surfaceContainerHighestDark = Color(0xFF353434)
+val onBackgroundDark = Color(0xFFFCDBD9)
+
+
+val surfaceDark = Color(0x66FFFFFF)
+val onSurfaceDark = Color(0xFFFCDBD9)
+val surfaceVariantDark = Color(0xFF5D3F3E)
+val onSurfaceVariantDark = Color(0xFFE6BDBA)
+
+val outlineDark = Color(0x80444444)
+
+
 
 
 

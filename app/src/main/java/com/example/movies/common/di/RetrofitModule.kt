@@ -2,10 +2,10 @@ package com.example.movies.common.di
 
 import com.example.movies.common.data.api.ApiConstants
 import com.example.movies.common.data.api.ApiService
-import com.example.movies.details.data.repository.GetNewsRepositoryByIdImpl
-import com.example.movies.details.domain.GetNewsRepositoryById
-import com.example.movies.news.data.repository.GetNewsRepositoryImpl
-import com.example.movies.news.domain.GetNewsRepository
+import com.example.movies.news.data.details.repository.GetNewsByIdRepositoryImpl
+import com.example.movies.news.domain.details.GetNewsByIdRepository
+import com.example.movies.news.data.main.repository.GetNewsRepositoryImpl
+import com.example.movies.news.domain.main.GetNewsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,7 +23,7 @@ object RetrofitModule {
 
     @Provides
     @Singleton
-    fun providerRetrofit(): Retrofit{
+    fun providerRetrofit(): Retrofit {
 
         val loggingInterceptor = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
@@ -50,8 +50,8 @@ object RetrofitModule {
 
     @Provides
     @Singleton
-    fun provideGetNewsRepositoryById(apiService: ApiService): GetNewsRepositoryById {
-        return GetNewsRepositoryByIdImpl(apiService)
+    fun provideGetNewsRepositoryById(apiService: ApiService): GetNewsByIdRepository {
+        return GetNewsByIdRepositoryImpl(apiService)
     }
 
     @Provides
@@ -59,7 +59,6 @@ object RetrofitModule {
     fun provideGetNewsRepository(apiService: ApiService): GetNewsRepository {
         return GetNewsRepositoryImpl(apiService)
     }
-
 
 
 }

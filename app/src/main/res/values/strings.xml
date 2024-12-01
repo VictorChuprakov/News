@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">FoxNews</string>
+    <!-- General Application Information -->
+    <string name="app_name">Newsify</string>
+
+    <!-- Categories -->
     <string name="politics">Politics</string>
     <string name="economics">Economics</string>
     <string name="business">Business</string>
@@ -18,19 +21,79 @@
     <string name="religion">Religion</string>
     <string name="international_relations">International Relations</string>
 
+    <!-- Titles -->
     <string name="title_Fox">Fox</string>
     <string name="title_News">News</string>
 
-    <string name="label_news">News</string>
+    <!-- Navigation Labels -->
+    <string name="label_home">Home</string>
     <string name="label_favorite">Favorite</string>
-
+    <string name="label_profile">Profile</string>
+  ч
+    <!-- Messages -->
     <string name="no_news">No news found</string>
-
     <string name="network_error">Network error occurred</string>
     <string name="responce_null">Response body is null</string>
     <string name="request_failed">Request failed</string>
     <string name="unexpected_error">An unexpected error occurred</string>
+    <string name="repeat">Repeat</string>
+
+    <!-- Error Messages -->
+    <string name="unauthorized_message">Unauthorized</string>
+    <string name="conflict_message">Conflict</string>
+    <string name="request_timeout_message">Request Timeout</string>
+    <string name="payload_too_large_message">Payload Too Large</string>
+    <string name="server_error_message">Server Error</string>
+    <string name="unknown_error_message">Unknown error</string>
+
+    <!-- Terms and Conditions -->
+    <string name="terms_and_conditions_title">Terms and Conditions</string>
+    <string name="terms_and_conditions_body">
+        Welcome to our News App! By accessing and using this application, you agree to the following terms and conditions. Please read them carefully before using the app.\n\n
+        By using this app, you acknowledge and agree to abide by all applicable laws and regulations. You must not use the app for any unlawful or disruptive purposes, and you are responsible for ensuring that any content you post or share within the app does not infringe on the rights of others.\n\n
+        The news and articles available on this app are for informational purposes only, and we do not guarantee the accuracy, completeness, or timeliness of any content. The views and opinions expressed in the articles are those of the authors and do not necessarily reflect our views. We reserve the right to modify or remove any content at our discretion.\n\n
+        We take your privacy seriously. Any data you provide through the app is handled in accordance with our Privacy Policy. We are committed to protecting your personal information and ensuring a secure user experience.\n\n
+        The app may include links to third-party websites or services that we do not control. We are not responsible for the content, policies, or practices of these external sites and encourage you to review their respective terms and privacy policies.\n\n
+        We reserve the right to suspend or terminate your access to the app at any time, without notice, if you violate these terms. We are not liable for any direct, indirect, or consequential damages arising from your use of the app, including any errors or interruptions in service.\n\n
+        These terms and conditions are governed by the laws of [Country], and any disputes will be resolved in the courts of [City/Country]. If you have any questions or concerns, please contact us at [Contact Information].\n\n
+        By continuing to use this app, you acknowledge that you have read, understood, and agree to these terms and conditions.
+    </string>
+
+    <!-- Privacy Policy -->
+    <string name="privacy_policy_title">Privacy Policy</string>
+    <string name="privacy_policy_body">
+        Welcome to FoxNews! We take your privacy seriously and are committed to protecting the personal information you share with us. This Privacy Policy explains how we collect, use, and protect your data when you use our application. By accessing and using our app, you consent to the practices described in this policy.\n\n
+        1. Information We Collect: We collect information that you provide directly to us when you use the app, such as:\n
+        - Personal Information: When you register or create an account, you may be asked to provide your name, email address, and other details.\n
+        - Usage Data: We collect information about how you interact with the app, including device information, IP address, and browsing behavior.\n
+        - Location Data: If you enable location services, we may collect your device`s location to offer localized news.\n\n
+        2. How We Use Your Information: We use the information we collect to:\n
+        - Provide and improve our services.\n
+        - Personalize your news feed and offer tailored content.\n
+        - Communicate with you about updates, promotions, and news that might interest you.\n
+        - Ensure the security and functionality of the app.\n\n
+        3. Sharing Your Information: We do not sell, rent, or trade your personal information. However, we may share non-personal aggregated data with third-party service providers to improve the app`s functionality. We may also share your data if required by law or in response to legal processes.\n\n
+        4. Third-Party Links: Our app may contain links to third-party websites and services. We are not responsible for the privacy practices or content of these external sites. We encourage you to review their privacy policies before providing any personal information.\n\n
+        5. Data Security: We use reasonable administrative, technical, and physical safeguards to protect your personal information from unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet or method of electronic storage is 100% secure, and we cannot guarantee absolute security.\n\n
+        6. Your Choices: You can manage your privacy preferences in the app settings, including turning off location services or opting out of receiving marketing communications. If you wish to delete your account, you can do so by contacting us through the app or our support channels.\n\n
+        7. Children’s Privacy: Our app is not intended for children under the age of 13. We do not knowingly collect or solicit personal information from children. If we become aware that we have collected information from a child under 13, we will take steps to delete it.\n\n
+        8. Changes to This Privacy Policy: We may update this Privacy Policy from time to time. Any changes will be posted within the app or on our website with the updated date. By continuing to use the app, you agree to the updated policy.\n\n
+        9. Contact Us: If you have any questions or concerns about our Privacy Policy, please contact us at [Insert Contact Information].
+    </string>
+
+    <!-- Account Settings -->
+    <string name="change_password">Change Password</string>
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="repeat_new_password">Repeat New Password</string>
+
+    <!-- Favorite Section -->
+    <string name="favorite_title">Favorite</string>
+    <string name="favorite_header">Saved articles to the favorites</string>
+    <string name="favorite_empty_message">You haven`t saved any articles yet. Start reading and favorite them now</string>
 
 
 
+    <string name="browse">Browse</string>
+    <string name="discover_things_of_world">Discover things of this world</string>
 </resources>

@@ -2,10 +2,10 @@ package com.example.movies.common.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.movies.common.data.room.FavoriteNewsDao
+import com.example.movies.common.data.repository.FavoriteNewsRepositoryImpl
 import com.example.movies.common.data.room.NewsDatabase
-import com.example.movies.common.repository.DatabaseRepositoryImpl
-import com.example.movies.common.domain.DatabaseRepository
+import com.example.movies.common.data.room.dao.FavoriteNewsDao
+import com.example.movies.common.domain.FavoriteNewsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,7 +25,9 @@ object DatabaseModule {
             context,
             NewsDatabase::class.java,
             "news_database"
-        ).build()
+        )
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
     @Provides
@@ -34,8 +36,8 @@ object DatabaseModule {
     }
 
     @Provides
-    fun provideDatabaseRepository(favoriteNewsDao: FavoriteNewsDao): DatabaseRepository {
-        return DatabaseRepositoryImpl(favoriteNewsDao)
+    fun provideDatabaseRepository(favoriteNewsDao: FavoriteNewsDao): FavoriteNewsRepository {
+        return FavoriteNewsRepositoryImpl(favoriteNewsDao)
     }
 
 }
